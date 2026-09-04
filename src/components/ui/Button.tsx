@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "outline";
+type Variant = "primary" | "secondary" | "outline" | "green";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -16,6 +16,8 @@ const variantStyles: Record<Variant, string> = {
     "bg-transparent text-charcoal hover:bg-charcoal hover:text-cream border border-charcoal/30 hover:border-charcoal",
   outline:
     "bg-transparent text-cream hover:bg-cream hover:text-charcoal border border-cream/30 hover:border-cream",
+  green:
+    "bg-flw-green text-cream hover:bg-flw-green-light border border-flw-green",
 };
 
 export default function Button({

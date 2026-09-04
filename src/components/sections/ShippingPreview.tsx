@@ -5,7 +5,7 @@ import { siteConfig } from "../../config/site";
 export default function ShippingPreview() {
   return (
     <section id="shipping" className="bg-cream py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="flw-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -57,7 +57,7 @@ export default function ShippingPreview() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
                 />
-                <circle cx="50" cy="350" r="4" className="fill-accent" />
+                <circle cx="50" cy="350" r="4" className="fill-flw-green" />
                 <circle cx="350" cy="350" r="4" className="fill-charcoal" />
               </svg>
 

@@ -4,7 +4,7 @@ import { siteConfig } from "../../config/site";
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-charcoal text-cream py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="flw-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function HowItWorks() {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="group relative bg-charcoal p-8 sm:p-10 hover:bg-charcoal-light transition-colors duration-500"
             >
-              <span className="text-5xl sm:text-6xl font-bold font-display text-cream/10 group-hover:text-accent/40 transition-colors duration-500 block mb-6">
+              <span className="text-5xl sm:text-6xl font-bold font-display text-cream/10 group-hover:text-flw-green-muted/60 transition-colors duration-500 block mb-6">
                 {step.number}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold font-display tracking-tight mb-3">

@@ -10,7 +10,7 @@ const iconMap = {
 export default function WhatWeSource() {
   return (
     <section id="what-we-source" className="bg-cream py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="flw-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function WhatWeSource() {
                 className="group relative bg-cream-light border border-charcoal/8 p-8 sm:p-10 overflow-hidden cursor-default"
               >
                 {/* Hover background */}
-                <div className="absolute inset-0 bg-charcoal translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                <div className="absolute inset-0 bg-flw-green translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-6">

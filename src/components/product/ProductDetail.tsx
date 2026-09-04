@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Check } from "lucide-react";
+import { X, Check, ShoppingBag } from "lucide-react";
 import {
   type Product,
   type StorageOption,
@@ -8,6 +8,7 @@ import {
   getStorageForModel,
   availabilityLabels,
 } from "../../config/products";
+import { useCart } from "../../context/CartContext";
 import ProductImage from "./ProductImage";
 
 interface ProductDetailProps {
@@ -16,8 +17,10 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail({ product, onClose }: ProductDetailProps) {
+  const { addItem } = useCart();
   const [selectedModel, setSelectedModel] = useState<string>("");
   const [selectedStorage, setSelectedStorage] = useState<string>("");
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -26,6 +29,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
       setSelectedModel(firstModel);
       const storage = getStorageForModel(product, firstModel);
       setSelectedStorage(storage[0]?.label ?? "");
+      setAdded(false);
     }
   }, [product]);
 
@@ -51,6 +55,24 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
     setSelectedModel(model);
     const storage = getStorageForModel(product!, model);
     setSelectedStorage(storage[0]?.label ?? "");
+    setAdded(false);
+  };
+
+  const handleAddToCart = () => {
+    if (!product || !selectedModel || !selectedStorage) return;
+    addItem({
+      productId: product.id,
+      productName: product.name,
+      brand: product.brand,
+      model: selectedModel,
+      storage: selectedStorage,
+      price: currentPrice,
+      imageRef: product.imageRef,
+    });
+    setAdded(true);
+    setTimeout(() => {
+      onClose();
+    }, 600);
   };
 
   return (
@@ -131,8 +153,8 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                         onClick={() => handleModelChange(model)}
                         className={`relative px-4 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 min-h-[48px] ${
                           selectedModel === model
-                            ? "border-charcoal bg-charcoal text-cream"
-                            : "border-charcoal/15 text-charcoal/70 hover:border-charcoal/40"
+                            ? "border-flw-green bg-flw-green text-cream"
+                            : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
                         }`}
                       >
                         {model}
@@ -150,11 +172,14 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                     {storageOptions.map((storage) => (
                       <button
                         key={storage.label}
-                        onClick={() => setSelectedStorage(storage.label)}
+                        onClick={() => {
+                          setSelectedStorage(storage.label);
+                          setAdded(false);
+                        }}
                         className={`relative px-4 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 min-h-[48px] ${
                           selectedStorage === storage.label
-                            ? "border-charcoal bg-charcoal text-cream"
-                            : "border-charcoal/15 text-charcoal/70 hover:border-charcoal/40"
+                            ? "border-flw-green bg-flw-green text-cream"
+                            : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
                         }`}
                       >
                         {storage.label}
@@ -163,9 +188,9 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   </div>
                 </div>
 
-                {/* Price */}
+                {/* Price + Add to Cart */}
                 <div className="mt-auto pt-8 border-t border-charcoal/10">
-                  <div className="flex items-end justify-between">
+                  <div className="flex items-end justify-between mb-4">
                     <div>
                       <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display">
                         Price
@@ -181,18 +206,34 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                       )}
                     </div>
                     {selectedModel && selectedStorage && (
-                      <div className="flex items-center gap-1.5 text-xs text-charcoal/40 font-display">
+                      <div className="flex items-center gap-1.5 text-xs text-flw-green font-display">
                         <Check size={14} strokeWidth={2} />
                         Configuration selected
                       </div>
                     )}
                   </div>
 
-                  <p className="mt-4 text-xs text-charcoal/40 leading-relaxed">
-                    Cart and checkout will be available in the next phase. For
-                    now, browse and configure products to see available options
-                    and pricing.
-                  </p>
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={!selectedModel || !selectedStorage}
+                    className={`w-full flex items-center justify-center gap-2 px-7 py-4 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none ${
+                      added
+                        ? "bg-flw-green-dark text-cream"
+                        : "bg-flw-green text-cream hover:bg-flw-green-light border border-flw-green"
+                    }`}
+                  >
+                    {added ? (
+                      <>
+                        <Check size={18} strokeWidth={2} />
+                        Added to Cart
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingBag size={18} strokeWidth={1.5} />
+                        Add to Cart
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
@@ -202,3 +243,6 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
     </AnimatePresence>
   );
 }
+
+
+export default ProductDetail

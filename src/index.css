@@ -1,23 +1,44 @@
 @import "tailwindcss";
 
 @theme {
+  /* Charcoal ramp */
   --color-charcoal: #1a1a1a;
   --color-charcoal-light: #2a2a2a;
   --color-charcoal-dark: #0d0d0d;
+
+  /* Cream ramp */
   --color-cream: #f5f2ed;
   --color-cream-light: #faf8f4;
   --color-cream-dark: #e8e3db;
+
+  /* Warm grey ramp */
   --color-warm-grey: #8a8580;
   --color-warm-grey-light: #b5b0a9;
   --color-warm-grey-dark: #6b6660;
-  --color-accent: #c4a87a;
-  --color-accent-light: #d4bc94;
-  --color-accent-dark: #a8895e;
 
+  /* FLW. dark green accent */
+  --color-flw-green: #1f3d2f;
+  --color-flw-green-light: #2d5440;
+  --color-flw-green-dark: #143024;
+  --color-flw-green-muted: #3a6b53;
+
+  /* Legacy accent (warm gold) — kept for backward compatibility */
+  --color-accent: #1f3d2f;
+  --color-accent-light: #2d5440;
+  --color-accent-dark: #143024;
+
+  /* Typography */
   --font-display: "Space Grotesk", sans-serif;
   --font-body: "Inter", sans-serif;
 
+  /* Spacing */
   --spacing-unit: 8px;
+
+  /* Container */
+  --container-max: 1280px;
+  --container-padding: 24px;
+  --container-padding-tablet: 40px;
+  --container-padding-desktop: 64px;
 }
 
 :root {
@@ -64,7 +85,7 @@ a {
 }
 
 ::selection {
-  background-color: var(--color-charcoal);
+  background-color: var(--color-flw-green);
   color: var(--color-cream);
 }
 
@@ -80,6 +101,26 @@ a {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-warm-grey);
+}
+
+/* Container utility — consistent responsive padding for all major content */
+.flw-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 640px) {
+  .flw-container {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .flw-container {
+    padding-inline: var(--container-padding-desktop);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

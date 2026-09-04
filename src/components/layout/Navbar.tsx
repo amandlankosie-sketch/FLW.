@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { siteConfig } from "../../config/site";
+import { useCart } from "../../context/CartContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { totalItems, openCart } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -38,7 +40,7 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <nav className="flw-container h-16 sm:h-20 flex items-center justify-between">
           <button
             onClick={() => handleNavClick("#home")}
             className="text-xl sm:text-2xl font-bold font-display tracking-tight text-charcoal"
@@ -54,24 +56,51 @@ export default function Navbar() {
                 className="text-sm font-medium text-charcoal/70 hover:text-charcoal transition-colors duration-200 relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-charcoal transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-flw-green transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
             <button
+              onClick={openCart}
+              className="relative p-2 text-charcoal hover:text-flw-green transition-colors duration-200"
+              aria-label={`Open cart, ${totalItems} items`}
+            >
+              <ShoppingBag size={22} strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
+                  {totalItems > 9 ? "9+" : totalItems}
+                </span>
+              )}
+            </button>
+            <button
               onClick={() => handleNavClick("#shop")}
-              className="px-6 py-2.5 bg-charcoal text-cream text-sm font-medium font-display tracking-wide hover:bg-charcoal-light transition-all duration-300 active:scale-95"
+              className="px-6 py-2.5 bg-flw-green text-cream text-sm font-medium font-display tracking-wide hover:bg-flw-green-light transition-all duration-300 active:scale-95"
             >
               Start Shopping
             </button>
           </div>
 
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="md:hidden p-2 -mr-2 text-charcoal"
-            aria-label="Open menu"
-          >
-            <Menu size={24} strokeWidth={1.5} />
-          </button>
+          {/* Mobile right side */}
+          <div className="md:hidden flex items-center gap-1">
+            <button
+              onClick={openCart}
+              className="relative p-2 text-charcoal"
+              aria-label={`Open cart, ${totalItems} items`}
+            >
+              <ShoppingBag size={22} strokeWidth={1.5} />
+              {totalItems > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
+                  {totalItems > 9 ? "9+" : totalItems}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="p-2 text-charcoal"
+              aria-label="Open menu"
+            >
+              <Menu size={24} strokeWidth={1.5} />
+            </button>
+          </div>
         </nav>
       </motion.header>
 
@@ -84,20 +113,20 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[60] bg-charcoal text-cream flex flex-col md:hidden"
           >
-            <div className="h-16 sm:h-20 px-5 sm:px-8 flex items-center justify-between">
+            <div className="flw-container h-16 sm:h-20 flex items-center justify-between">
               <span className="text-xl font-bold font-display tracking-tight">
                 {siteConfig.brand}
               </span>
               <button
                 onClick={() => setMenuOpen(false)}
-                className="p-2 -mr-2"
+                className="p-2"
                 aria-label="Close menu"
               >
                 <X size={24} strokeWidth={1.5} />
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center px-8 gap-2">
+            <div className="flex-1 flex flex-col justify-center flw-container gap-2">
               {siteConfig.navigation.map((item, i) => (
                 <motion.button
                   key={item.label}
@@ -105,7 +134,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-left py-4 text-3xl font-display font-semibold tracking-tight border-b border-cream/10 hover:text-accent transition-colors duration-200"
+                  className="text-left py-4 text-3xl font-display font-semibold tracking-tight border-b border-cream/10 hover:text-flw-green-muted transition-colors duration-200"
                 >
                   {item.label}
                 </motion.button>
@@ -115,7 +144,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + siteConfig.navigation.length * 0.08, duration: 0.4 }}
                 onClick={() => handleNavClick("#shop")}
-                className="mt-8 py-4 bg-cream text-charcoal text-base font-display font-medium tracking-wide text-center hover:bg-accent transition-all duration-300"
+                className="mt-8 py-4 bg-flw-green text-cream text-base font-display font-medium tracking-wide text-center hover:bg-flw-green-light transition-all duration-300"
               >
                 Start Shopping
               </motion.button>

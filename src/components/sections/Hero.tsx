@@ -40,7 +40,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full pt-20 sm:pt-24 pb-16">
+      <div className="relative flw-container w-full pt-20 sm:pt-24 pb-16">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-charcoal/15 rounded-full"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-flw-green animate-pulse" />
             <span className="text-xs font-medium tracking-wide text-charcoal/70 uppercase">
               Sourcing from China → South Africa
             </span>
@@ -70,7 +70,7 @@ export default function Hero() {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-                className="absolute -bottom-1 left-0 right-0 h-1 bg-accent origin-left"
+                className="absolute -bottom-1 left-0 right-0 h-1 bg-flw-green origin-left"
               />
             </span>
           </motion.h1>

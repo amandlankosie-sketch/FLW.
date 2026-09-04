@@ -28,7 +28,7 @@ export default function ProductCard({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       onClick={() => onSelect(product)}
-      className="group relative flex flex-col text-left bg-cream-light border border-charcoal/8 overflow-hidden hover:border-charcoal/20 transition-all duration-300"
+      className="group relative flex flex-col text-left bg-cream-light border border-charcoal/8 overflow-hidden hover:border-flw-green/30 transition-all duration-300"
     >
       {/* Image area */}
       <div className="relative aspect-[4/5] overflow-hidden">
@@ -78,7 +78,7 @@ export default function ProductCard({
               {modelCount} {modelCount === 1 ? "model" : "models"} available
             </p>
           </div>
-          <div className="flex items-center gap-1 text-xs font-display font-medium text-charcoal/50 group-hover:text-charcoal transition-colors duration-300">
+          <div className="flex items-center gap-1 text-xs font-display font-medium text-charcoal/50 group-hover:text-flw-green transition-colors duration-300">
             View Options
             <ArrowRight
               size={14}

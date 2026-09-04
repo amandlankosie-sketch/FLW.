@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-charcoal text-cream">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div className="flw-container py-12 sm:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight">

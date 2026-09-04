@@ -20,7 +20,7 @@ export default function SocialConnection() {
 
   return (
     <section className="bg-cream py-20 sm:py-28 border-t border-charcoal/8">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="flw-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

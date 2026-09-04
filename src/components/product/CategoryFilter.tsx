@@ -30,7 +30,7 @@ export default function CategoryFilter({
             {isActive && (
               <motion.span
                 layoutId="category-pill"
-                className="absolute inset-0 bg-charcoal"
+                className="absolute inset-0 bg-flw-green"
                 transition={{ type: "spring", stiffness: 400, damping: 35 }}
               />
             )}

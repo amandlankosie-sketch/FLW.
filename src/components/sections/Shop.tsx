@@ -21,7 +21,7 @@ export default function Shop() {
 
   return (
     <section id="shop" className="bg-cream pt-20 sm:pt-28 pb-20 sm:pb-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="flw-container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
