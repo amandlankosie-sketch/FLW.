@@ -243,6 +243,3 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
     </AnimatePresence>
   );
 }
-
-
-export default ProductDetail
