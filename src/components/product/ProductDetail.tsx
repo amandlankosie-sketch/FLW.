@@ -75,6 +75,8 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
     }, 600);
   };
 
+  const configComplete = !!selectedModel && !!selectedStorage;
+
   return (
     <AnimatePresence>
       {product && (
@@ -128,7 +130,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                 </h2>
 
                 <span
-                  className={`mt-3 inline-flex self-start px-3 py-1 text-[10px] uppercase tracking-widest font-display ${
+                  className={`mt-3 inline-flex self-start px-3 py-1.5 text-[10px] uppercase tracking-widest font-display whitespace-nowrap ${
                     product.availability === "available"
                       ? "bg-cream-dark text-charcoal/60"
                       : "bg-charcoal text-cream/80"
@@ -151,7 +153,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                       <button
                         key={model}
                         onClick={() => handleModelChange(model)}
-                        className={`relative px-4 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 min-h-[48px] ${
+                        className={`px-5 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
                           selectedModel === model
                             ? "border-flw-green bg-flw-green text-cream"
                             : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
@@ -176,7 +178,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                           setSelectedStorage(storage.label);
                           setAdded(false);
                         }}
-                        className={`relative px-4 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 min-h-[48px] ${
+                        className={`px-5 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
                           selectedStorage === storage.label
                             ? "border-flw-green bg-flw-green text-cream"
                             : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
@@ -188,8 +190,22 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   </div>
                 </div>
 
+                {/* Your Selection summary */}
+                <div className="mt-6 p-4 bg-cream-light border border-charcoal/10">
+                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-2">
+                    Your Selection
+                  </p>
+                  <p className="text-sm font-display font-semibold text-charcoal">
+                    {product.name}
+                    {selectedModel ? ` ${selectedModel}` : ""}
+                  </p>
+                  <p className="text-sm text-charcoal/50 mt-0.5">
+                    {selectedStorage || "—"}
+                  </p>
+                </div>
+
                 {/* Price + Add to Cart */}
-                <div className="mt-auto pt-8 border-t border-charcoal/10">
+                <div className="mt-auto pt-6 border-t border-charcoal/10">
                   <div className="flex items-end justify-between mb-4">
                     <div>
                       <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display">
@@ -205,18 +221,24 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                         </p>
                       )}
                     </div>
-                    {selectedModel && selectedStorage && (
+                    {configComplete && (
                       <div className="flex items-center gap-1.5 text-xs text-flw-green font-display">
                         <Check size={14} strokeWidth={2} />
-                        Configuration selected
+                        Ready to add
                       </div>
                     )}
                   </div>
 
+                  {!configComplete && (
+                    <p className="mb-3 text-xs text-charcoal/40 leading-relaxed">
+                      Select a model and storage option to continue.
+                    </p>
+                  )}
+
                   <button
                     onClick={handleAddToCart}
-                    disabled={!selectedModel || !selectedStorage}
-                    className={`w-full flex items-center justify-center gap-2 px-7 py-4 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none ${
+                    disabled={!configComplete}
+                    className={`w-full flex items-center justify-center gap-2 px-7 py-4 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
                       added
                         ? "bg-flw-green-dark text-cream"
                         : "bg-flw-green text-cream hover:bg-flw-green-light border border-flw-green"
@@ -225,7 +247,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                     {added ? (
                       <>
                         <Check size={18} strokeWidth={2} />
-                        Added to Cart
+                        Added to your cart
                       </>
                     ) : (
                       <>

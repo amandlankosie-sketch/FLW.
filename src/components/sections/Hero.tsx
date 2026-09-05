@@ -46,7 +46,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-charcoal/15 rounded-full"
+            className="inline-flex items-center gap-2 px-4 py-2.5 mb-8 border border-charcoal/15 rounded-full"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-flw-green animate-pulse" />
             <span className="text-xs font-medium tracking-wide text-charcoal/70 uppercase">

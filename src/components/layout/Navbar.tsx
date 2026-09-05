@@ -66,7 +66,7 @@ export default function Navbar() {
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
               {totalItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
+                <span className="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
                   {totalItems > 9 ? "9+" : totalItems}
                 </span>
               )}
@@ -88,7 +88,7 @@ export default function Navbar() {
             >
               <ShoppingBag size={22} strokeWidth={1.5} />
               {totalItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
+                <span className="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 flex items-center justify-center bg-flw-green text-cream text-[10px] font-bold font-display rounded-full">
                   {totalItems > 9 ? "9+" : totalItems}
                 </span>
               )}

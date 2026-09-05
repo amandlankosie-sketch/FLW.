@@ -41,9 +41,9 @@ export default function ProductCard({
         </div>
 
         {/* Availability badge */}
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 left-3 z-10">
           <span
-            className={`px-2.5 py-1 text-[10px] uppercase tracking-widest font-display ${
+            className={`inline-block px-3 py-1.5 text-[10px] uppercase tracking-widest font-display whitespace-nowrap ${
               product.availability === "available"
                 ? "bg-cream/90 text-charcoal/70"
                 : "bg-charcoal/90 text-cream/80"
@@ -78,12 +78,12 @@ export default function ProductCard({
               {modelCount} {modelCount === 1 ? "model" : "models"} available
             </p>
           </div>
-          <div className="flex items-center gap-1 text-xs font-display font-medium text-charcoal/50 group-hover:text-flw-green transition-colors duration-300">
+          <div className="flex items-center gap-1 text-xs font-display font-medium text-charcoal/50 group-hover:text-flw-green transition-colors duration-300 whitespace-nowrap">
             View Options
             <ArrowRight
               size={14}
               strokeWidth={1.5}
-              className="transition-transform duration-300 group-hover:translate-x-1"
+              className="transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0"
             />
           </div>
         </div>

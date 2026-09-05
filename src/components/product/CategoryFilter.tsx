@@ -21,7 +21,7 @@ export default function CategoryFilter({
           <button
             key={cat.value}
             onClick={() => onChange(cat.value)}
-            className={`relative px-5 py-2.5 text-sm font-display font-medium tracking-wide transition-colors duration-300 ${
+            className={`relative px-5 py-2.5 text-sm font-display font-medium tracking-wide transition-colors duration-300 whitespace-nowrap ${
               isActive
                 ? "text-cream"
                 : "text-charcoal/60 hover:text-charcoal"

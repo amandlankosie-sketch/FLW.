@@ -52,7 +52,7 @@ export default function SocialConnection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="group relative flex items-center justify-between p-6 sm:p-8 bg-cream-light border border-charcoal/8 hover:border-charcoal/20 hover:bg-cream-dark transition-all duration-300"
+                className="group relative flex items-center justify-between p-6 sm:p-8 bg-cream-light border border-charcoal/8 hover:border-charcoal/20 hover:bg-cream-dark transition-all duration-300 min-h-[80px]"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 flex items-center justify-center border border-charcoal/15 group-hover:bg-charcoal group-hover:border-charcoal transition-all duration-300">
@@ -72,7 +72,7 @@ export default function SocialConnection() {
                 <ArrowUpRight
                   size={20}
                   strokeWidth={1.5}
-                  className="text-charcoal/30 group-hover:text-charcoal group-hover:rotate-45 transition-all duration-300"
+                  className="text-charcoal/30 group-hover:text-charcoal group-hover:rotate-45 transition-all duration-300 flex-shrink-0"
                 />
               </motion.a>
             );

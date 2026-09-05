@@ -56,7 +56,7 @@ export default function WhatWeSource() {
                     <ArrowUpRight
                       size={20}
                       strokeWidth={1.5}
-                      className="text-charcoal/30 group-hover:text-cream transition-colors duration-500"
+                      className="text-charcoal/30 group-hover:text-cream transition-colors duration-500 flex-shrink-0"
                     />
                   </div>
 
@@ -68,7 +68,7 @@ export default function WhatWeSource() {
                   </p>
                 </div>
 
-                <span className="absolute top-6 right-6 text-[10px] uppercase tracking-widest text-charcoal/30 group-hover:text-cream/30 transition-colors duration-500 font-display">
+                <span className="absolute bottom-6 right-6 text-[10px] uppercase tracking-widest text-charcoal/30 group-hover:text-cream/30 transition-colors duration-500 font-display">
                   Soon
                 </span>
               </motion.div>
