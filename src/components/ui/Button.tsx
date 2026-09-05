@@ -29,7 +29,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out rounded-none active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
+    "inline-flex items-center justify-center gap-2.5 px-8 py-4 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out rounded-none active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
   const classes = `${base} ${variantStyles[variant]} ${className}`;
 
   if (as === "a" && href) {

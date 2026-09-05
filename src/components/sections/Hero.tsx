@@ -40,15 +40,15 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative flw-container w-full pt-20 sm:pt-24 pb-16">
+      <div className="relative flw-container w-full pt-28 sm:pt-32 pb-20">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 mb-8 border border-charcoal/15 rounded-full"
+            className="inline-flex items-center gap-2.5 px-5 py-3 mb-10 border border-charcoal/15 rounded-full"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-flw-green animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-flw-green animate-pulse" />
             <span className="text-xs font-medium tracking-wide text-charcoal/70 uppercase">
               Sourcing from China → South Africa
             </span>
@@ -79,7 +79,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 text-base sm:text-lg text-charcoal/60 max-w-xl leading-relaxed"
+            className="mt-10 text-base sm:text-lg text-charcoal/60 max-w-xl leading-relaxed"
           >
             {siteConfig.description}
           </motion.p>
@@ -88,7 +88,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4"
+            className="mt-12 flex flex-col sm:flex-row gap-4"
           >
             <Button
               as="a"
@@ -127,7 +127,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2.5"
       >
         <span className="text-[10px] uppercase tracking-widest text-charcoal/40 font-display">
           Scroll

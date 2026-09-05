@@ -46,9 +46,9 @@ export default function CartDrawer() {
             className="relative w-full max-w-md h-full bg-cream flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-charcoal/10 flex-shrink-0">
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-display font-bold tracking-tight text-charcoal">
+            <div className="flex items-center justify-between px-7 py-6 border-b border-charcoal/10 flex-shrink-0">
+              <div className="flex items-center gap-2.5">
+                <h2 className="text-xl font-display font-bold tracking-tight text-charcoal">
                   Your Cart
                 </h2>
                 {totalItems > 0 && (
@@ -59,7 +59,7 @@ export default function CartDrawer() {
               </div>
               <button
                 onClick={closeCart}
-                className="w-10 h-10 flex items-center justify-center text-charcoal hover:bg-charcoal/5 transition-colors duration-200"
+                className="w-11 h-11 flex items-center justify-center text-charcoal hover:bg-charcoal/5 transition-colors duration-200"
                 aria-label="Close cart"
               >
                 <X size={20} strokeWidth={1.5} />
@@ -69,18 +69,18 @@ export default function CartDrawer() {
             {/* Body */}
             {items.length === 0 ? (
               <div className="flex-1 flex flex-col items-center justify-center px-8 text-center">
-                <div className="w-16 h-16 flex items-center justify-center border border-charcoal/15 mb-6">
-                  <ShoppingBag size={28} strokeWidth={1.5} className="text-charcoal/30" />
+                <div className="w-20 h-20 flex items-center justify-center border border-charcoal/15 mb-8">
+                  <ShoppingBag size={32} strokeWidth={1.5} className="text-charcoal/30" />
                 </div>
                 <h3 className="text-xl font-display font-bold tracking-tight text-charcoal">
                   Your cart is waiting.
                 </h3>
-                <p className="mt-3 text-sm text-charcoal/50 max-w-xs leading-relaxed">
+                <p className="mt-4 text-sm text-charcoal/50 max-w-xs leading-relaxed">
                   Explore our products and add something you'd like FLW. to source.
                 </p>
                 <Button
                   variant="green"
-                  className="mt-8"
+                  className="mt-10"
                   onClick={handleShopClick}
                 >
                   Shop Products
@@ -88,11 +88,11 @@ export default function CartDrawer() {
               </div>
             ) : (
               <>
-                <div className="flex-1 overflow-y-auto px-6 py-4">
+                <div className="flex-1 overflow-y-auto px-7 py-5">
                   {items.map((item) => (
                     <div
                       key={item.key}
-                      className="flex gap-4 py-4 border-b border-charcoal/8"
+                      className="flex gap-5 py-5 border-b border-charcoal/8"
                     >
                       {/* Image */}
                       <div className="w-20 h-24 flex-shrink-0 overflow-hidden">
@@ -105,32 +105,32 @@ export default function CartDrawer() {
 
                       {/* Info */}
                       <div className="flex-1 flex flex-col min-w-0">
-                        <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-display">
+                        <p className="text-[11px] uppercase tracking-widest text-charcoal/40 font-display">
                           {item.brand}
                         </p>
-                        <h3 className="text-sm font-display font-semibold text-charcoal tracking-tight">
+                        <h3 className="text-sm font-display font-semibold text-charcoal tracking-tight mt-0.5">
                           {item.productName}
                         </h3>
-                        <p className="text-xs text-charcoal/50 mt-0.5">
+                        <p className="text-xs text-charcoal/50 mt-1">
                           {item.model} — {item.storage}
                         </p>
 
-                        <div className="flex items-center justify-between mt-auto pt-3">
+                        <div className="flex items-center justify-between mt-auto pt-4">
                           {/* Quantity controls */}
                           <div className="flex items-center border border-charcoal/15">
                             <button
                               onClick={() => updateQuantity(item.key, item.quantity - 1)}
-                              className="w-9 h-9 flex items-center justify-center text-charcoal/60 hover:bg-charcoal/5 transition-colors duration-200"
+                              className="w-10 h-10 flex items-center justify-center text-charcoal/60 hover:bg-charcoal/5 transition-colors duration-200"
                               aria-label={`Decrease quantity of ${item.productName}`}
                             >
                               <Minus size={14} strokeWidth={2} />
                             </button>
-                            <span className="w-9 text-center text-sm font-display font-medium text-charcoal">
+                            <span className="w-10 text-center text-sm font-display font-medium text-charcoal">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.key, item.quantity + 1)}
-                              className="w-9 h-9 flex items-center justify-center text-charcoal/60 hover:bg-charcoal/5 transition-colors duration-200"
+                              className="w-10 h-10 flex items-center justify-center text-charcoal/60 hover:bg-charcoal/5 transition-colors duration-200"
                               aria-label={`Increase quantity of ${item.productName}`}
                             >
                               <Plus size={14} strokeWidth={2} />
@@ -138,7 +138,7 @@ export default function CartDrawer() {
                           </div>
 
                           {/* Price + remove */}
-                          <div className="flex flex-col items-end gap-1.5">
+                          <div className="flex flex-col items-end gap-2">
                             {item.price !== null ? (
                               <p className="text-sm font-display font-semibold text-charcoal">
                                 R{(item.price * item.quantity).toLocaleString()}
@@ -153,7 +153,7 @@ export default function CartDrawer() {
                               className="text-charcoal/30 hover:text-flw-green transition-colors duration-200"
                               aria-label={`Remove ${item.productName} from cart`}
                             >
-                              <Trash2 size={15} strokeWidth={1.5} />
+                              <Trash2 size={16} strokeWidth={1.5} />
                             </button>
                           </div>
                         </div>
@@ -163,13 +163,13 @@ export default function CartDrawer() {
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-5 border-t border-charcoal/10 bg-cream-light flex-shrink-0">
-                  <div className="flex items-center justify-between mb-3">
+                <div className="px-7 py-6 border-t border-charcoal/10 bg-cream-light flex-shrink-0">
+                  <div className="flex items-center justify-between mb-4">
                     <span className="text-sm uppercase tracking-widest text-charcoal/40 font-display">
                       Subtotal
                     </span>
                     {subtotal > 0 ? (
-                      <span className="text-xl font-display font-bold text-charcoal">
+                      <span className="text-2xl font-display font-bold text-charcoal">
                         R{subtotal.toLocaleString()}
                       </span>
                     ) : (
@@ -178,7 +178,7 @@ export default function CartDrawer() {
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-charcoal/40 mb-4 leading-relaxed">
+                  <p className="text-xs text-charcoal/40 mb-5 leading-relaxed">
                     Delivery charges and final totals will be calculated at checkout.
                   </p>
                   <Button variant="secondary" className="w-full" onClick={closeCart}>

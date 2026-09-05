@@ -14,14 +14,14 @@ export default function CategoryFilter({
   onChange,
 }: CategoryFilterProps) {
   return (
-    <div className="flex flex-wrap gap-2 sm:gap-3">
+    <div className="flex flex-wrap gap-2.5 sm:gap-3">
       {productCategories.map((cat) => {
         const isActive = active === cat.value;
         return (
           <button
             key={cat.value}
             onClick={() => onChange(cat.value)}
-            className={`relative px-5 py-2.5 text-sm font-display font-medium tracking-wide transition-colors duration-300 whitespace-nowrap ${
+            className={`relative px-6 py-3 text-sm font-display font-medium tracking-wide transition-colors duration-300 whitespace-nowrap ${
               isActive
                 ? "text-cream"
                 : "text-charcoal/60 hover:text-charcoal"

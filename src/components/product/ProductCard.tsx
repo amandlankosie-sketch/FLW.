@@ -41,9 +41,9 @@ export default function ProductCard({
         </div>
 
         {/* Availability badge */}
-        <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-4 left-4 z-10">
           <span
-            className={`inline-block px-3 py-1.5 text-[10px] uppercase tracking-widest font-display whitespace-nowrap ${
+            className={`inline-block px-3.5 py-2 text-[11px] uppercase tracking-widest font-display whitespace-nowrap ${
               product.availability === "available"
                 ? "bg-cream/90 text-charcoal/70"
                 : "bg-charcoal/90 text-cream/80"
@@ -55,15 +55,15 @@ export default function ProductCard({
       </div>
 
       {/* Info */}
-      <div className="p-5 sm:p-6 flex flex-col gap-1">
-        <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-display">
+      <div className="p-6 sm:p-7 flex flex-col gap-2">
+        <p className="text-[11px] uppercase tracking-widest text-charcoal/40 font-display">
           {product.brand}
         </p>
         <h3 className="text-lg sm:text-xl font-bold font-display tracking-tight text-charcoal">
           {product.name}
         </h3>
 
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-charcoal/8">
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-charcoal/8">
           <div>
             {startingPrice !== null ? (
               <p className="text-sm font-display font-medium text-charcoal">
@@ -74,11 +74,11 @@ export default function ProductCard({
                 Price on request
               </p>
             )}
-            <p className="text-[11px] text-charcoal/40 mt-0.5">
+            <p className="text-xs text-charcoal/40 mt-1">
               {modelCount} {modelCount === 1 ? "model" : "models"} available
             </p>
           </div>
-          <div className="flex items-center gap-1 text-xs font-display font-medium text-charcoal/50 group-hover:text-flw-green transition-colors duration-300 whitespace-nowrap">
+          <div className="flex items-center gap-1.5 text-xs font-display font-medium text-charcoal/50 group-hover:text-flw-green transition-colors duration-300 whitespace-nowrap">
             View Options
             <ArrowRight
               size={14}

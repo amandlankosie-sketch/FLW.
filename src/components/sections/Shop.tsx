@@ -20,7 +20,7 @@ export default function Shop() {
   }, [activeCategory]);
 
   return (
-    <section id="shop" className="bg-cream pt-20 sm:pt-28 pb-20 sm:pb-28">
+    <section id="shop" className="bg-cream pt-24 sm:pt-32 pb-24 sm:pb-32">
       <div className="flw-container">
         {/* Header */}
         <motion.div
@@ -28,7 +28,7 @@ export default function Shop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="mb-10 sm:mb-14"
+          className="mb-12 sm:mb-16"
         >
           <span className="text-xs uppercase tracking-widest text-charcoal/40 font-display">
             Shop
@@ -36,7 +36,7 @@ export default function Shop() {
           <h2 className="mt-3 text-3xl sm:text-5xl font-bold font-display tracking-tight text-charcoal">
             Discover What's Available
           </h2>
-          <p className="mt-4 text-base text-charcoal/60 max-w-lg">
+          <p className="mt-5 text-base sm:text-lg text-charcoal/60 max-w-lg leading-relaxed">
             Browse selected products currently available through FLW. Choose
             your model and storage to see available options and pricing.
           </p>
@@ -48,7 +48,7 @@ export default function Shop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mb-8 sm:mb-10"
+          className="mb-10 sm:mb-14"
         >
           <CategoryFilter
             active={activeCategory}
@@ -57,7 +57,7 @@ export default function Shop() {
         </motion.div>
 
         {/* Product grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProducts.map((product, i) => (
             <ProductCard
               key={product.id}
@@ -69,7 +69,7 @@ export default function Shop() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <p className="text-center text-charcoal/40 py-16 font-display">
+          <p className="text-center text-charcoal/40 py-20 font-display text-lg">
             No products in this category yet.
           </p>
         )}

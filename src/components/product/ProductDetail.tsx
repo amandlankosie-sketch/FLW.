@@ -99,12 +99,12 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0.5 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="relative w-full sm:max-w-4xl max-h-[92svh] overflow-y-auto bg-cream sm:mx-4 rounded-t-2xl sm:rounded-none"
+            className="relative w-full sm:max-w-5xl max-h-[92svh] overflow-y-auto bg-cream sm:mx-4 rounded-t-2xl sm:rounded-none"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center bg-cream/80 backdrop-blur-sm text-charcoal hover:bg-charcoal hover:text-cream transition-colors duration-200"
+              className="absolute top-5 right-5 z-20 w-11 h-11 flex items-center justify-center bg-cream/80 backdrop-blur-sm text-charcoal hover:bg-charcoal hover:text-cream transition-colors duration-200"
               aria-label="Close product details"
             >
               <X size={20} strokeWidth={1.5} />
@@ -112,7 +112,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
               {/* Image */}
-              <div className="relative aspect-square sm:aspect-auto sm:min-h-[500px]">
+              <div className="relative aspect-square sm:aspect-auto sm:min-h-[560px]">
                 <ProductImage
                   imageRef={product.imageRef}
                   brand={product.brand}
@@ -121,16 +121,16 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
               </div>
 
               {/* Configuration */}
-              <div className="p-6 sm:p-10 flex flex-col">
-                <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-display">
+              <div className="p-7 sm:p-12 flex flex-col">
+                <p className="text-[11px] uppercase tracking-widest text-charcoal/40 font-display">
                   {product.brand}
                 </p>
-                <h2 className="mt-1 text-2xl sm:text-3xl font-bold font-display tracking-tight text-charcoal">
+                <h2 className="mt-2 text-2xl sm:text-4xl font-bold font-display tracking-tight text-charcoal">
                   {product.name}
                 </h2>
 
                 <span
-                  className={`mt-3 inline-flex self-start px-3 py-1.5 text-[10px] uppercase tracking-widest font-display whitespace-nowrap ${
+                  className={`mt-4 inline-flex self-start px-3.5 py-2 text-[11px] uppercase tracking-widest font-display whitespace-nowrap ${
                     product.availability === "available"
                       ? "bg-cream-dark text-charcoal/60"
                       : "bg-charcoal text-cream/80"
@@ -139,21 +139,21 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   {availabilityLabels[product.availability]}
                 </span>
 
-                <p className="mt-4 text-sm text-charcoal/60 leading-relaxed">
+                <p className="mt-5 text-sm sm:text-base text-charcoal/60 leading-relaxed">
                   {product.description}
                 </p>
 
                 {/* Model selection */}
-                <div className="mt-8">
-                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-3">
+                <div className="mt-10">
+                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-4">
                     Select Model
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2.5">
                     {getModels(product).map((model) => (
                       <button
                         key={model}
                         onClick={() => handleModelChange(model)}
-                        className={`px-5 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
+                        className={`px-6 py-3.5 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
                           selectedModel === model
                             ? "border-flw-green bg-flw-green text-cream"
                             : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
@@ -166,11 +166,11 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                 </div>
 
                 {/* Storage selection */}
-                <div className="mt-6">
-                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-3">
+                <div className="mt-8">
+                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-4">
                     Select Storage
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2.5">
                     {storageOptions.map((storage) => (
                       <button
                         key={storage.label}
@@ -178,7 +178,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                           setSelectedStorage(storage.label);
                           setAdded(false);
                         }}
-                        className={`px-5 py-3 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
+                        className={`px-6 py-3.5 text-sm font-display font-medium tracking-wide border transition-all duration-300 ${
                           selectedStorage === storage.label
                             ? "border-flw-green bg-flw-green text-cream"
                             : "border-charcoal/15 text-charcoal/70 hover:border-flw-green/40"
@@ -191,32 +191,32 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                 </div>
 
                 {/* Your Selection summary */}
-                <div className="mt-6 p-4 bg-cream-light border border-charcoal/10">
-                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-2">
+                <div className="mt-8 p-5 bg-cream-light border border-charcoal/10">
+                  <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display mb-3">
                     Your Selection
                   </p>
-                  <p className="text-sm font-display font-semibold text-charcoal">
+                  <p className="text-base font-display font-semibold text-charcoal">
                     {product.name}
                     {selectedModel ? ` ${selectedModel}` : ""}
                   </p>
-                  <p className="text-sm text-charcoal/50 mt-0.5">
+                  <p className="text-sm text-charcoal/50 mt-1">
                     {selectedStorage || "—"}
                   </p>
                 </div>
 
                 {/* Price + Add to Cart */}
-                <div className="mt-auto pt-6 border-t border-charcoal/10">
-                  <div className="flex items-end justify-between mb-4">
+                <div className="mt-auto pt-8 border-t border-charcoal/10">
+                  <div className="flex items-end justify-between mb-5">
                     <div>
                       <p className="text-xs uppercase tracking-widest text-charcoal/40 font-display">
                         Price
                       </p>
                       {currentPrice !== null ? (
-                        <p className="mt-1 text-3xl font-bold font-display tracking-tight text-charcoal">
+                        <p className="mt-1.5 text-3xl sm:text-4xl font-bold font-display tracking-tight text-charcoal">
                           R{currentPrice.toLocaleString()}
                         </p>
                       ) : (
-                        <p className="mt-1 text-2xl font-bold font-display tracking-tight text-charcoal/50">
+                        <p className="mt-1.5 text-2xl font-bold font-display tracking-tight text-charcoal/50">
                           Price on request
                         </p>
                       )}
@@ -230,7 +230,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   </div>
 
                   {!configComplete && (
-                    <p className="mb-3 text-xs text-charcoal/40 leading-relaxed">
+                    <p className="mb-4 text-xs text-charcoal/40 leading-relaxed">
                       Select a model and storage option to continue.
                     </p>
                   )}
@@ -238,7 +238,7 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   <button
                     onClick={handleAddToCart}
                     disabled={!configComplete}
-                    className={`w-full flex items-center justify-center gap-2 px-7 py-4 text-sm font-medium tracking-wide font-display transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
+                    className={`w-full flex items-center justify-center gap-2.5 px-8 py-5 text-base font-medium tracking-wide font-display transition-all duration-300 ease-out active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${
                       added
                         ? "bg-flw-green-dark text-cream"
                         : "bg-flw-green text-cream hover:bg-flw-green-light border border-flw-green"
@@ -246,12 +246,12 @@ export default function ProductDetail({ product, onClose }: ProductDetailProps) 
                   >
                     {added ? (
                       <>
-                        <Check size={18} strokeWidth={2} />
+                        <Check size={20} strokeWidth={2} />
                         Added to your cart
                       </>
                     ) : (
                       <>
-                        <ShoppingBag size={18} strokeWidth={1.5} />
+                        <ShoppingBag size={20} strokeWidth={1.5} />
                         Add to Cart
                       </>
                     )}
